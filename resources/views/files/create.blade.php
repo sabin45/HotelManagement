@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+@include('admin.inc.flash-message')
 @section('content')
 @section('title')
 Create Files

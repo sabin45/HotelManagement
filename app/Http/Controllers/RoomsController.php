@@ -79,30 +79,30 @@ class RoomsController extends Controller
      */
     public function update(Request $request, rooms $room)
     {
-        // $request->validate([
-        //     'img_link' => 'required',
-        //     'title' => 'required',
-        //     'description' => 'required'
-        // ]);
-    
-        // $rooms->img_link = $request->img_link;
-        // $rooms->title = $request->title;
-        // $rooms->description = $request->description;
-            
-        // if ($rooms->save()) {
-        //     return redirect()->route('rooms.index')->with('success', 'Rooms Updated');
-        // } else {
-        //     // handle error.
-        // }
-
         $request->validate([
-        'img_link' => 'required',
-        'title' => 'required',
-        'description' => 'required'
-    ]);
+            'img_link' => 'required',
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+    
+        $room->img_link = $request->img_link;
+        $room->title = $request->title;
+        $room->description = $request->description;
+            
+        if ($room->save()) {
+            return redirect()->route('rooms.index')->with('success', 'Rooms Updated');
+        } else {
+            // handle error.
+        }
+
+    //     $request->validate([
+    //     'img_link' => 'required',
+    //     'title' => 'required',
+    //     'description' => 'required'
+    // ]);
         
-        $room->update($request->all());
-        return redirect()->route('rooms.index')->with('success','Rooms updated successfully');
+    //     $room->update($request->all());
+    //     return redirect()->route('rooms.index')->with('success','Rooms updated successfully');
         
     }
 
@@ -115,6 +115,6 @@ class RoomsController extends Controller
     public function destroy(rooms $room)
     {
         $room->delete();
-return redirect()->route('rooms.index')->with('success','rooms deleted successfully');
+return redirect()->route('rooms.index')->with('success','Rooms deleted successfully');
     }
 }

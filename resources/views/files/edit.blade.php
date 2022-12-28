@@ -1,11 +1,13 @@
 @extends('admin.layouts.app')
 @section('content')
 @section('title')
+
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
 <h2>Edit Files</h2>
 </div>
+@include('admin.inc.flash-message')
 <div class="text-left">
 <a class="btn btn-primary" href="{{ route('files.index') }}"> Back</a>
 </div>

@@ -45,7 +45,7 @@ class BlogsController extends Controller
         $blogs ->btn_link=$request->btn_link;
 
         $blogs->save();
-        return redirect ('blogs')->with('message','Blogs Created Successfully.');
+        return redirect ('blogs')->with('success','Blogs Created Successfully.');
     }
 
     /**

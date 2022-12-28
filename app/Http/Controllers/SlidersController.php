@@ -41,7 +41,7 @@ class SlidersController extends Controller
         $sliders ->img_link=$request->img_link;
 
         $sliders->save();
-        return redirect ('sliders')->with('message','Sliders Created Successfully.'); 
+        return redirect ('sliders')->with('success','Sliders Created Successfully.'); 
     }
 
     /**
@@ -97,6 +97,6 @@ class SlidersController extends Controller
     public function destroy(sliders $slider)
     {
         $slider->delete();
-return redirect()->route('sliders.index')->with('success','sliders deleted successfully');
+return redirect()->route('sliders.index')->with('success','Sliders deleted successfully');
     }
 }

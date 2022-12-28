@@ -9,10 +9,11 @@
               @section('title')
              Manage Slider
               @endsection
+              @include('admin.inc.flash-message')
              
 
               <a href="{{route('sliders.create')}}" class="btn btn-info btn-md" role="button">
-          <i class="la la-add" >Add Slider</i>
+          <i class="fas fa-plus" >Add Slider</i>
         </a>
 
             

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\about;
+use App\Models\files;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -14,7 +15,9 @@ class AboutController extends Controller
      */
     public function index()
     {
+
         $abouts = about::latest()->get();
+       
         return view('about.index',compact('abouts'));
     }
 
@@ -25,9 +28,11 @@ class AboutController extends Controller
      */
     public function create()
     {
-        
-        return view('about.create');
-        return back()->with('success','Item created successfully!');
+
+        $files = files::latest()->get();
+        return view('about.create',compact('files'));
+
+       // return back()->with('success','Item created successfully!');
     }
 
     /**
@@ -39,11 +44,12 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         $about = new about;
-        $about ->img_link=$request->img_link;
+        $about ->img_link=$request->file_link;
         $about ->description=$request->description;
 
         $about->save();
-        return redirect ('about')->with('message','About Created Successfully.');
+        return redirect ('about')->with('success','About Created Successfully.');
+       
     }
 
     /**

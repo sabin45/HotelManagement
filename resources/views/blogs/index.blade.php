@@ -9,10 +9,10 @@
               @section('title')
              Manage Blog
               @endsection
-             
+              @include('admin.inc.flash-message')
 
               <a href="{{route('blogs.create')}}" class="btn btn-info btn-md" role="button">
-          <i class="la la-add" >Add Blog</i>
+          <i class="fas fa-plus" >Add Blog</i>
         </a>
 
             

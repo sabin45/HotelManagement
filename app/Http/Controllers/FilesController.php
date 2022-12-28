@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\files;
 use Illuminate\Http\Request;
+use App\resurces\views;
+
+
 
 class FilesController extends Controller
 {
@@ -38,19 +41,53 @@ class FilesController extends Controller
     {
         $filename = str_replace(' ','',request('name'));
         $ext = $request->file_link->extension();
+        $filesize = $request->file_link->getSize();
         $finalname = $filename.''.time().'.'.$request->file_link->extension();
-        $request->file_link->move(public_path('uploads/files'),$finalname);
+        
 
 
+        if($filename!="")
+                {
+                  if($filesize<2000000)
+                    {
+                            if($ext=='jpg' || $ext == 'png' || $ext == 'pdf' || $ext == 'jpeg')
+                            {
+                                if($request->file_link->move(public_path('uploads/files'),$finalname))
+                                {
+                                
+                                    $files = new files;
+                                    $files ->name=$request->name;
+                                    $files ->file_link=$finalname;
+                                    $files ->ext=$ext;
+                            
+                                    $files->save();
+                                    return redirect ('files')->with('success','Files Created Successfully.');
+                                }
+                                else{
+                                    echo alert("File couldn't uploaded successfully.") ;
+                                }
+                            }else 
+                                {
 
-        $files = new files;
-        $files ->name=$request->name;
-        $files ->file_link=$finalname;
-        $files ->ext=$ext;
+                                    return redirect ('files')->with('error','File Extension doesn match. We only accept jpg, png, pdf.');
+                            
+                            } 
 
-        $files->save();
-        return redirect ('files')->with('message','Files Created Successfully.');
+                    }else
+                    {
+                      echo alert("File size exceeded.");
+                    }
+
+                } 
+                    else 
+                    {
+                      echo "File name is necessary.";
+                    }
+                    
+               
+                
     }
+                 
 
     /**
      * Display the specified resource.
@@ -60,7 +97,7 @@ class FilesController extends Controller
      */
     public function show(files $files)
     {
-        //
+        return view('files.show',compact('files'));
     }
 
     /**

@@ -5,7 +5,7 @@ Create Slider
 @endsection
 <form class="row g-3 needs-validation" method="POST" action="{{route('sliders.store')}}" enctype="multipart/form-data" novalidate>
 @csrf
-
+@include('admin.inc.flash-message')
 <div class="col-md-9 form-group">
     <label for="validationCustom01" class="form-label">Name</label>
     <input type="text" class="form-control"  name="name" require>

@@ -5,7 +5,7 @@ Create Roomd
 @endsection
 <form class="row g-3 needs-validation" method="POST" action="{{route('rooms.store')}}" enctype="multipart/form-data" novalidate>
 @csrf
-
+@include('admin.inc.flash-message')
   <div class="col-md-12">
     <label for="validationCustom01" class="form-label">Image Link</label>
     <input type="text" class="form-control"  name="img_link" require>

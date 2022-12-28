@@ -11,10 +11,10 @@
               @section('title')
              Manage About
               @endsection
-             
+              @include('admin.inc.flash-message')
 
               <a href="{{route('about.create')}}" class="btn btn-info btn-md" role="button">
-          <i class="la la-add" >Add About</i>
+          <i class="fas fa-plus" >Add About</i>
         </a>
 
             

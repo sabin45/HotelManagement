@@ -25,7 +25,7 @@
 @endsection
 <form class="row g-3 needs-validation" method="POST" action="{{ route('blogs.update',$blogs->id) }}" enctype="multipart/form-data" novalidate >
 @csrf
-@include('flash-message')
+@include('admin.inc.flash-message')
 @method('PUT')
 
   <div class="col-md-12">

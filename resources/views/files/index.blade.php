@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 
+
   <!-- Content Wrapper. Contains page content -->
   
 @section('content')
@@ -10,11 +11,11 @@
              Manage File
               @endsection
              
-
+              @include('admin.inc.flash-message')
               <a href="{{route('files.create')}}" class="btn btn-info btn-md" role="button">
-          <i class="la la-add" >Add File</i>
+          <i class="fas fa-add" >Add File</i>
         </a>
-
+      
             
               <!-- /.card-header -->
               <div class="card-body">
@@ -37,7 +38,7 @@
                   <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$file->name}}</td>
-                                    <td>{{$file->file_link}}</td>
+                                    <td><img src="{{asset('uploads\files')}}/{{$file->file_link}}" alt=""style="display:block; object-fit: contain;" width="100%" height="120px"></td>
                                     <td>{{$file->ext}}</td>
                                     <td>
                                         @if($file->status==1)
@@ -49,7 +50,9 @@
                                     <td>
                     
                                     <form action="{{route('files.destroy',$file->id)}}" method="POST">
-                                        @csrf
+                                    <a class="btn btn-info" href="{{ route('files.show',$file->id) }}">Show</a>    
+                                    
+                                    @csrf
                                     @method('DELETE')
                                     <div class="row-md-3" style="display: flex; justify-content:flex-end;"> 
                                     

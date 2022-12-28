@@ -25,7 +25,7 @@
 @endsection
 <form class="row g-3 needs-validation" method="POST" action="{{ route('rooms.update',$rooms->id) }}" enctype="multipart/form-data" novalidate>
 @csrf
-@include('flash-message')
+@include('admin.inc.flash-message')
 @method('PATCH')
   <div class="col-md-12">
     <label for="Image" class="form-label">Image Link</label>
