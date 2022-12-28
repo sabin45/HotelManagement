@@ -38,28 +38,22 @@
                   <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$file->name}}</td>
-                                    <td><img src="{{asset('uploads\files')}}/{{$file->file_link}}" alt=""style="display:block; object-fit: contain;" width="100%" height="120px"></td>
+                                    <td><img src="{{asset('uploads\files')}}/{{$file->file_link}}" alt=""style="display:block; object-fit: contain;" width="80%" height="100px"></td>
                                     <td>{{$file->ext}}</td>
                                     <td>
-                                        @if($file->status==1)
-                                        <p class="btn btn-primary btn-sm">Active</p>
-                                        @else
-                                        <p class="btn btn-secondary btn-sm">Deactive</p>
-                                        @endif
+                                    <input data-id="{{$file->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $file->status ? 'checked' : '' }}>
                                     </td>
                                     <td>
                     
-                                    <form action="" method="POST">
-                                    <a class="btn btn-info" href="{{ route('files.show',$file->id) }}">Show</a>    
+                                    <form action="{{route('files.destroy',$file->id)}}" method="POST">
                                     
                                     @csrf
                                     @method('DELETE')
                                     <div class="row-md-3" style="display: flex; justify-content:flex-end;"> 
-                                    
-                                    <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('files.destroy',$file->id)}}"><i class="fa fa-trash"></i></a>
-                         
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure Want to Delete?')"><i class="fa fa-trash"></i></button>
+                                    <a class="btn btn-info" href="{{ route('files.show',$file->id) }}"><i class="fa fa-eye"></i></a>
                                     <!-- <a class="btn btn-info btn-sm " href="{{route('files.edit',$file->id)}}"><i class="la la-edit text-white "></i>Edit</a> -->
-                                    <!-- <button class="btn btn-info btn-sm " type="submit" ><i class="la la-edit text-white "></i> </button> -->
+                                     <!-- <button class="btn btn-info btn-sm " type="submit" ><i class="la la-edit text-white "></i> </button> --> -->
                                     </div>
                                     
                                    
@@ -72,11 +66,28 @@
                 
               </div>
               
-  
+              <script>
+   $(function() { 
+           $('.toggle-class').change(function() { 
+           var status = $(this).prop('checked') == true ? 1 : 0;  
+           var file_id = $(this).data('id');  
+           $.ajax({ 
+    
+               type: "GET", 
+               dataType: "json", 
+               url: '/status/update', 
+               data: {'status': status, 'file_id': file_id}, 
+               success: function(data){ 
+               console.log(data.success) 
+            } 
+         }); 
+      }) 
+   }); 
+</script>
     
     @endsection
   
 
+    <input data-id="{{$file->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $file->status ? 'checked' : '' }}>
 
-
-  
+   

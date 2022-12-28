@@ -130,6 +130,14 @@ class FilesController extends Controller
             $file->update($request->all());
             return redirect()->route('files.index')->with('success','Files updated successfully');
            
+
+    }
+    public function updateStatus(Request $request)
+    {
+        $file = file::find($request->file_id); 
+        $file->status = $request->status; 
+        $file->save(); 
+        return response()->json(['success'=>'Status change successfully.']); 
     }
 
     /**

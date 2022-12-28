@@ -28,6 +28,7 @@ Route::resource('blogs','App\Http\Controllers\BlogsController');
 Route::resource('rooms','App\Http\Controllers\RoomsController');
 Route::resource('sliders','App\Http\Controllers\SlidersController');
 Route::resource('files','App\Http\Controllers\FilesController');
+Route::get('/status/update', [FilesController::class, 'updateStatus']);
 
 
 
