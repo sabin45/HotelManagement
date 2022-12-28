@@ -49,23 +49,21 @@
                                     </td>
                                     <td>
                     
-                                    <form action="{{route('files.destroy',$file->id)}}" method="POST">
+                                    <form action="" method="POST">
                                     <a class="btn btn-info" href="{{ route('files.show',$file->id) }}">Show</a>    
                                     
                                     @csrf
                                     @method('DELETE')
                                     <div class="row-md-3" style="display: flex; justify-content:flex-end;"> 
                                     
-                                    <button class="btn btn-danger btn-sm mr-2" type="submit" >  <i class="la la-trash text-white "></i> </button>
+                                    <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('files.destroy',$file->id)}}"><i class="fa fa-trash"></i></a>
+                         
                                     <!-- <a class="btn btn-info btn-sm " href="{{route('files.edit',$file->id)}}"><i class="la la-edit text-white "></i>Edit</a> -->
                                     <!-- <button class="btn btn-info btn-sm " type="submit" ><i class="la la-edit text-white "></i> </button> -->
                                     </div>
                                     
-                  
-            
-                </td>
-                   
-                    
+                                   
+                </td>     
                   </tr>
                   </form>
                   @endforeach

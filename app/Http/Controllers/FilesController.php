@@ -140,7 +140,13 @@ class FilesController extends Controller
      */
     public function destroy(files $file)
     {
+  
+        
+        // $image_path = "uploads\files";  // Value is not URL but directory file path
+
         $file->delete();
+        unlink("uploads/files/".$file->file_link);
+     
         return redirect()->route('files.index')->with('success','Files deleted successfully');
    
     }

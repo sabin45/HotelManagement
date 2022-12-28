@@ -62,19 +62,19 @@
                                  <a class="nav-link" href="#">Home</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{route('about')}}">About</a>
+                                 <a class="nav-link" href="{{Route('aboutpage')}}">About</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{route('room')}}">Our room</a>
+                                 <a class="nav-link" href="#">Our room</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{route('gallery')}}">Gallery</a>
+                                 <a class="nav-link" href="#">Gallery</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{route('blog')}}">Blog</a>
+                                 <a class="nav-link" href="#">Blog</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
+                                 <a class="nav-link" href="#">Contact Us</a>
                               </li>
                            </ul>
                         </div>
@@ -415,11 +415,11 @@
                      <h3>Menu Link</h3>
                      <ul class="link_menu">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><a href="about.blade.php"> about</a></li>
-                        <li><a href="{{route('about')}}">Our Room</a></li>
-                        <li><a href="{{route('gallery')}}">Gallery</a></li>
-                        <li><a href="{{route('gallery')}}">Blog</a></li>
-                        <li><a href="{{route('gallery')}}">Contact Us</a></li>
+                        <li><a href="#"> about</a></li>
+                        <li><a href="#">Our Room</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
                      </ul>
                   </div>
                   <div class="col-md-4">
