@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\files;
 use Illuminate\Http\Request;
 use App\resurces\views;
+use DB;
 
 
 
@@ -132,13 +133,32 @@ class FilesController extends Controller
            
 
     }
-    public function updateStatus(Request $request)
+    public function file_status($id, $st)
     {
-        $file = file::find($request->file_id); 
-        $file->status = $request->status; 
-        $file->save(); 
-        return response()->json(['success'=>'Status change successfully.']); 
+       
+        DB::table('files')->where('id',$id)->update([
+            'status'=>$st
+            
+        ]);
+
+        $status="";
+        $details = files::where('id','=',$id)->get();
+
+        foreach($details as $data){
+            $status= $data->status;
+        }
+
+        return response()->json(
+            [
+                'success' => true,
+                'status'=> $status
+            ]
+        );
+      
+           
+
     }
+    
 
     /**
      * Remove the specified resource from storage.

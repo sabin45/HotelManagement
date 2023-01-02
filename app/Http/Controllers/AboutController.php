@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\about;
 use App\Models\files;
 use Illuminate\Http\Request;
+use DB;
 
 class AboutController extends Controller
 {
@@ -44,7 +45,7 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         $about = new about;
-        $about ->img_link=$request->file_link;
+        $about ->img_link=$request->img_link;
         $about ->description=$request->description;
 
         $about->save();
@@ -106,4 +107,22 @@ class AboutController extends Controller
         $about->delete();
         return redirect()->route('about.index')->with('success','abouts deleted successfully');
     }
+
+      function status_update($id){
+        $about =  DB::table('abouts')
+                   ->select('status') 
+                   ->where('id','=',$id)
+                   ->first();
+
+                   if($about->status =='1'){
+                    $status = '0';
+                   } else{
+                    $status = '1';
+                   }
+
+                   $values = array('status'=>$status);
+                   DB::table('abouts')->where('id',$id)->update($values);
+                   //session()->flash('success','About status has been successfully updated.')
+                   return redirect()->route('about.index')->with('success','About status has been successfully updated.');
+     }
 }

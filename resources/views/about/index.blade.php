@@ -43,9 +43,10 @@
                                     
                                     <td>
                                         @if($about->status==1)
-                                        <p class="btn btn-primary btn-sm">Active</p>
+                                        <a href="{{url('/status-update',$about->id)}}"  class="btn btn-primary btn-sm">Active</a>
+                                        
                                         @else
-                                        <p class="btn btn-secondary btn-sm">Deactive</p>
+                                        <a href="{{url('/status-update',$about->id)}}"  class="btn btn-danger btn-sm">Inactive</a>
                                         @endif
                                     </td>
                                     <td>

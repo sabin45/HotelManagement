@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers;
+use App\Http\Controllers\BlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +22,8 @@ Route::get('/', function () {
 });
 
 //Route::get('/aboutpage', 'FrontendController@aboutpage')->name('aboutpage');
-Route::get('/random', [FrontendController::class, 'aboutpage'])->name('aboutpage');;
+Route::get('/aboutus', [FrontendController::class, 'aboutpage'])->name('aboutpage');
+Route::get('/rooms', [FrontendController::class, 'roompage'])->name('roompage');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -28,7 +32,13 @@ Route::resource('blogs','App\Http\Controllers\BlogsController');
 Route::resource('rooms','App\Http\Controllers\RoomsController');
 Route::resource('sliders','App\Http\Controllers\SlidersController');
 Route::resource('files','App\Http\Controllers\FilesController');
-Route::get('/status/update', [FilesController::class, 'updateStatus']);
+
+//admin route
+Route::get('/FilesController/status/update/{id}/{st}',[FilesController::class,'file_status'])->name('file.status');
+//admin about page route active inactive
+Route::get('/status-update/{id}',[AboutController::class,'status_update'])->name('Aboutstatus.update');
+//Route::get('/status-update/{id}',[BlogsController::class,'status_update'])->name('Blogstatus.update');
+
 
 
 

@@ -7,22 +7,26 @@ Create About
 @csrf
 @include('admin.inc.flash-message')
 
-<div class="form-group mb-3">                               
-  <label for="">Browse Image <span style="color:red;">*</span></label>
-</div>
-
-                    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  <div class="col-md-12">
+    <label for="validationCustom01" class="form-label">Image Link<span style="color:red;">*</span></label>
+    <input type="text" id ="imagebox" class="form-control" name="img_link" require disabled readonly>
+  
+  </div>
+  <div class="col-md-12">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary btn-outline-secondary mt-1" data-toggle="modal" data-target="#exampleModal">
   Browse Image
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="myModalLabel">Choose Image</h1>
-        <button type="button" class="btn-close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
       <style>
@@ -39,32 +43,21 @@ Create About
                   </label>
                 @endforeach
               @endif
-       </div>
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-close btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-close btn-primary" onclick="firstFunction()" data-dismiss="modal">Select</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="firstFunction()" data-dismiss="modal">Select</button>
       </div>
     </div>
   </div>
 </div>
+      </div>
 
-
-
-  <div class="col-md-12">
-    <label for="validationCustom01" class="form-label">Image Link<span style="color:red;">*</span></label>
-    <input type="text" id ="imagebox" class="form-control" name="img_link" require>
-  
-  </div>
-
-  
   <div class="col-md-9 form-group">
     <label for="validationCustom01" class="form-label">Description<span style="color:red;">*</span></label>
     <textarea id="description" class="form-control" name="description" require></textarea>
 
   </div>
-
-
-  
 
 <div class="col-md-12 mt-2">
   <button class="btn btn-primary " type="submit" style="margin-bottom: 50px">Submit</button>

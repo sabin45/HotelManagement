@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\blogs;
 use Illuminate\Http\Request;
+use DB;
 
 class BlogsController extends Controller
 {
@@ -105,5 +106,23 @@ class BlogsController extends Controller
     {
         $blog->delete();
         return redirect()->route('blogs.index')->with('success','blogs deleted successfully');
+    }
+
+     function status_update($id){
+        $blog = DB::table('blogs')
+                ->select('status')
+                ->where ('id','=',$id)
+                ->first();
+
+                if($blog->status =='1'){
+                    $status='0';
+                } else{
+                    $status = '1';
+                }
+
+                $result = array('status'=>$status);
+                DB::table('blogs')-> where('id',$id)->update($result);
+                return redirect()->route('blogs.index')->with('success','Status updated successfully');
+
     }
 }

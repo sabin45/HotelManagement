@@ -33,35 +33,35 @@
                   </thead>
                   <tbody>
                       @if($blogs)
-                      @foreach($blogs as $test)
+                      @foreach($blogs as $blog)
 
                   <tr>
                   <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$test->img_link}}</td>
-                                    <td>{{$test->title}}</td>
-                                    <td>{{$test->sub_title}}</td>
-                                    <td>{{$test->description}}</td>
-                                    <td>{{$test->btn_link}}</td>
+                                    <td>{{$blog->img_link}}</td>
+                                    <td>{{$blog->title}}</td>
+                                    <td>{{$blog->sub_title}}</td>
+                                    <td>{{$blog->description}}</td>
+                                    <td>{{$blog->btn_link}}</td>
                                     
                                     
                                     
                                     <td>
-                                        @if($test->status==1)
-                                        <p class="btn btn-primary btn-sm">Active</p>
+                                        @if($blog->status==1)
+                                        <a href="{{url('/status-update',$blog->id)}}"  class="btn btn-primary btn-sm">Active</a>
                                         @else
-                                        <p class="btn btn-secondary btn-sm">Deactive</p>
+                                        <a href="{{url('/status-update',$blog->id)}}"  class="btn btn-danger btn-sm">Inactive</a>
                                         @endif
                                     </td>
                                     <td>
                     
-                                    <form action="{{route('blogs.destroy',$test->id)}}" method="POST">
+                                    <form action="{{route('blogs.destroy',$blog->id)}}" method="POST">
                                         @csrf
                                     @method('DELETE')
                                     <div class="row-md-3" style="display: flex; justify-content:flex-end;"> 
                                     
                                     <button class="btn btn-danger btn-sm mr-2" type="submit" >  <i class="la la-trash text-white "></i> </button>
-                                    <a class="btn btn-info btn-sm " href="{{route('blogs.edit',$test->id)}}"><i class="la la-edit text-white "></i>Edit</a>
+                                    <a class="btn btn-info btn-sm " href="{{route('blogs.edit',$blog->id)}}"><i class="la la-edit text-white "></i>Edit</a>
                                     <!-- <button class="btn btn-info btn-sm " type="submit" ><i class="la la-edit text-white "></i> </button> -->
                                     </div>
                                     

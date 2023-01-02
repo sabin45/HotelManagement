@@ -8,7 +8,12 @@ class FrontendController extends Controller
 {
     public function aboutpage()
     {
-
         return view('about');
     }
+    public function roompage()
+    {
+        return view('room');
+    }
+   
+
 }
