@@ -34,16 +34,16 @@
                                  <a class="nav-link" href="{{Route('aboutpage')}}">About</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="#">Our room</a>
+                                 <a class="nav-link" href="{{Route('hotelrooms')}}">Our room</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="#">Gallery</a>
+                                 <a class="nav-link" href="{{Route('hotel_gallery')}}">Gallery</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="#">Blog</a>
+                                 <a class="nav-link" href="{{Route('hotel_blog')}}">Blog</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="#">Contact Us</a>
+                                 <a class="nav-link" href="{{Route('hotel_contact')}}">Contact Us</a>
                               </li>
                            </ul>
                         </div>

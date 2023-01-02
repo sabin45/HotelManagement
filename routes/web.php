@@ -5,6 +5,13 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\FilesController;
+use App\Http\Controllers\frontend\RoomController;
+use App\Http\Controllers\frontend\AboutsController;
+use App\Http\Controllers\frontend\BlogController;
+use App\Http\Controllers\frontend\GalleryController;
+use App\Http\Controllers\frontend\ContactController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +25,16 @@ use App\Http\Controllers\BlogsController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('Frontend.index');
 });
 
-//Route::get('/aboutpage', 'FrontendController@aboutpage')->name('aboutpage');
-Route::get('/aboutus', [FrontendController::class, 'aboutpage'])->name('aboutpage');
-Route::get('/rooms', [FrontendController::class, 'roompage'])->name('roompage');
+//Route::get('/aboutpage', 'FrontendController@aboutpage')->name('aboutpage');/
+Route::get('/aboutus', [AboutsController::class, 'aboutpage'])->name('aboutpage');
+Route::get('/Rooms', [RoomController::class, 'hotelrooms'])->name('hotelrooms');
+Route::get('/Articles', [BlogController::class, 'hotel_blog'])->name('hotel_blog');
+Route::get('/Gallery', [GalleryController::class, 'hotel_gallery'])->name('hotel_gallery');
+Route::get('/ContactUs', [ContactController::class, 'hotel_contact'])->name('hotel_contact');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
